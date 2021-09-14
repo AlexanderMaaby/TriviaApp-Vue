@@ -8,17 +8,19 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-    path: '/',
-    components: Home
+        path: "/",
+        component: Home
     },
     {
-        path: '/quiz',
-        components: Quiz
+        path: "/quiz",
+        component: Quiz
     },
     {
-        path: '/results',
-        components: Results
-    },
-]
+        path: "/results",
+        component: Results
+    }
+];
 
-export default new VueRouter({routes})
+const mode = "history";
+
+export default new VueRouter({routes, mode})
