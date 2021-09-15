@@ -22,10 +22,13 @@ export default {
         ...mapState(["user", "error"])
     },
     methods: {
-        ...mapActions(["fetchUser"]),
+        ...mapActions(["fetchUser", "addUser"]),
         async onClickGetUser() {
             await this.fetchUser(this.username);
-            this.user = this.getUsers();
+            if(!this.user) {
+              //Todo update user state
+              this.addUser(this.username)
+            }
         }
     }
 }

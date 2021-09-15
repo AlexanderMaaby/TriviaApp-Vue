@@ -3,7 +3,7 @@ import Vue from "vue";
 
 Vue.use(Vuex)
 
-import { Get } from "./api/user-API";
+import { Get, Post} from "./api/user-API";
 
 export default new Vuex.Store({
     state: {
@@ -28,6 +28,9 @@ export default new Vuex.Store({
             const [error, user] = await Get(username);
             commit("setUsers", user);
             commit("setError", error);
+        },
+        async addUser({commit}, username) {
+            await Post(username);
         }
     }
 })
