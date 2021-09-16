@@ -1,10 +1,21 @@
 <template>
     <div>
-        <label>Username: {{username}}</label>
+        <label>Username: </label>
         <input placeholder="Type in your username" type="text" v-model="username"/>
         <button @click="onClickGetUser">Select Username</button>
-        <p>{{ error }}</p>
-        <div v-if="user">{{user.id}}</div>
+        <p v-if="error">{{ error }}</p>
+        <div v-if="user">
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Highscore</th>
+                </tr>
+                <tr>
+                    <td>{{user.username}}</td>
+                    <td>{{getScoreOfUser}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -18,18 +29,22 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["getUser"]),
+        ...mapGetters(["getUser", "getScoreOfUser"]),
         ...mapState(["user", "error"])
     },
     methods: {
         ...mapActions(["fetchUser", "addUser"]),
         async onClickGetUser() {
             await this.fetchUser(this.username);
+            // If user does not exist create a new one
             if(!this.getUser) {
-              //Todo update user state
               this.addUser(this.username)
             }
         }
     }
 }
 </script>
+
+<style scoped>
+
+</style>

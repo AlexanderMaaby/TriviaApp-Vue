@@ -7,12 +7,18 @@ import { Get, Post} from "./api/user-API";
 
 export default new Vuex.Store({
     state: {
-        user: {},
-        error: ""
+        user: null,
+        error: null,
     },
     getters: {
         getUser: state => {
             return state.user;
+        },
+        getScoreOfUser: state => {
+            if(state.user.highScore >= 0) {
+                return state.user.highScore;
+            }
+            return state.user.score;
         }
     },
     mutations: {
