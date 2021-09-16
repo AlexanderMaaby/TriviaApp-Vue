@@ -5,7 +5,8 @@
 <script>
 export default {
   name: "DropDown",
-  props: ["item"]
+  props: ["item", "templateValue"]
+  
 }
 </script>
 

@@ -4,6 +4,7 @@ import Vue from "vue";
 Vue.use(Vuex)
 
 import { Get, Post} from "./api/user-API";
+import { getQuestions } from "./api/quiz-API";
 
 export default new Vuex.Store({
     state: {
@@ -40,8 +41,14 @@ export default new Vuex.Store({
         setError: (state, error) => {
             state.error = error
         },
-        setQuizTemplate: (state, template) => {
-            state.quizTemplate = template
+        setQuizDifficulty: (state, difficulty) => {
+            state.quizTemplate.difficulty = difficulty
+        },
+        setQuizAmount: (state, amount) => {
+            state.quizTemplate.numberOfQuestions = amount
+        },
+        setQuizCategory: (state, category) => {
+            state.quizTemplate.category = category
         },
         setQuestions: (state, questions) => {
             state.questions = questions
@@ -57,6 +64,20 @@ export default new Vuex.Store({
             const [error, user] = await Post(username);
             commit("setUsers", user);
             commit("setError", error);
+        },
+        async getQuestionsFromTemplate({commit, state}) {
+            const difficultyString = state.quizTemplate.difficulty ? `difficulty=${state.quizTemplate.difficulty}`: null;
+            const categoryString = state.quizTemplate.category ? `category=${state.quizTemplate.category}` : null;
+
+            const settings = () => {
+                let setString = "";
+                if(difficultyString) setString += `&${difficultyString}`;
+                if(categoryString) setString += `&${categoryString}`;
+                return setString;
+            };
+            const [error, questions] = await getQuestions(state.quizTemplate.numberOfQuestions, settings());
+            commit("setError", error);
+            commit("setQuestions", questions);
         }
     }
 })
