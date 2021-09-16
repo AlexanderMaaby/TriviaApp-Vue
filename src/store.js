@@ -15,7 +15,9 @@ export default new Vuex.Store({
             numberOfQuestions: 10,
             category: null
         },
-        questions: null
+        questions: null,
+        currentScore: null,
+        answers: null
     },
     getters: {
         getUser: state => {
