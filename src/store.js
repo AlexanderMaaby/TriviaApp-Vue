@@ -52,10 +52,10 @@ export default new Vuex.Store({
         },
         setQuestions: (state, questions) => {
             state.questions = questions
-        }
+        },
     },
     actions: {
-        async fetchUser({ commit }, username) {
+        async fetchUser({ commit, }, username) {
             const [error, user] = await Get(username);
             commit("setUsers", user);
             commit("setError", error);

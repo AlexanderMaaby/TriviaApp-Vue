@@ -1,10 +1,15 @@
 <template>
-<div></div>
+  <div>
+    <h1>Quiz!!!!</h1>
+    <Question/>
+  </div>
 </template>
 
 <script>
+import Question from "@/components/quiz/Question";
 export default {
-  name: "Quiz"
+  name: "Quiz",
+  components: {Question}
 }
 </script>
 
