@@ -1,30 +1,15 @@
 <template>
-  <section>
-    <p v-text="questions.question"/> //question
-    <CheckBoxes/> //Answers
-  </section>
+<div>
+    <label >meow</label>
+    <input type="radio" name="level"/>
+</div>
 </template>
 
-<script>
-import CheckBoxes from "@/components/quiz/CheckBoxes";
-import {mapGetters} from "vuex";
-export default {
-  name: "question",
-  data() {
-    return {
-      questions: this.getQuestions()
-    }
-  },
-  components: {CheckBoxes},
-  computed: {
-    ...mapGetters(["getQuestions"])
-  },
-  methods: {
+// TODO: Fix label and input on press choose
 
-  }
+<script>
+export default {
+    name: "Question",
+    props: ["level"]
 }
 </script>
-
-<style scoped>
-
-</style>

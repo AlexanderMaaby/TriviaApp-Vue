@@ -7,8 +7,13 @@
 
 <script>
 import Question from "@/components/quiz/Question";
+
 export default {
   name: "Quiz",
+  aQuestion: "meow",
+  data() {
+
+  },
   components: {Question}
 }
 </script>
