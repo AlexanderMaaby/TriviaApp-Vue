@@ -11,7 +11,7 @@ export default new Vuex.Store({
         error: ""
     },
     getters: {
-        getUsers: state => {
+        getUser: state => {
             return state.user;
         }
     },
@@ -29,8 +29,10 @@ export default new Vuex.Store({
             commit("setUsers", user);
             commit("setError", error);
         },
-        async addUser({commit}, username) {
-            await Post(username);
+        async addUser({ commit }, username) {
+            const [error, user] = await Post(username);
+            commit("setUsers", user);
+            commit("setError", error);
         }
     }
 })

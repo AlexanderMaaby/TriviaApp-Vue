@@ -4,7 +4,7 @@
         <input placeholder="Type in your username" type="text" v-model="username"/>
         <button @click="onClickGetUser">Select Username</button>
         <p>{{ error }}</p>
-        <div>{{user.id}}</div>
+        <div v-if="user">{{user.id}}</div>
     </div>
 </template>
 
@@ -18,14 +18,14 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["getUsers"]),
+        ...mapGetters(["getUser"]),
         ...mapState(["user", "error"])
     },
     methods: {
         ...mapActions(["fetchUser", "addUser"]),
         async onClickGetUser() {
             await this.fetchUser(this.username);
-            if(!this.user) {
+            if(!this.getUser) {
               //Todo update user state
               this.addUser(this.username)
             }
