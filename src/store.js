@@ -34,6 +34,12 @@ export default new Vuex.Store({
         },
         getQuestions: state => {
             return state.questions;
+        },
+        getCurrentScore: state => {
+            return state.currentScore;
+        },
+        getAnswers: state => {
+            return state.answers;
         }
     },
     mutations: {
@@ -55,6 +61,12 @@ export default new Vuex.Store({
         setQuestions: (state, questions) => {
             state.questions = questions
         },
+        setCurrentScore: (state, score) => {
+            state.currentScore = score;
+        },
+        setAnswers: (state, answers) => {
+            state.answers = answers;
+        }
     },
     actions: {
         async fetchUser({ commit, }, username) {
@@ -80,6 +92,10 @@ export default new Vuex.Store({
             const [error, questions] = await getQuestions(state.quizTemplate.numberOfQuestions, settings());
             commit("setError", error);
             commit("setQuestions", questions);
+        },
+        addAnswer({commit, state}, answer) {
+            const newAnswers = [...state.answer, answer];
+            commit("setAnswers", newAnswers);
         }
     }
 })
