@@ -17,7 +17,7 @@ export default new Vuex.Store({
         },
         questions: null,
         currentScore: null,
-        answers: null
+        answers: []
     },
     getters: {
         getUser: state => {
@@ -93,9 +93,8 @@ export default new Vuex.Store({
             commit("setError", error);
             commit("setQuestions", questions);
         },
-        addAnswer({commit, state}, answer) {
-            const newAnswers = [...state.answer, answer];
-            commit("setAnswers", newAnswers);
+        addAnswer({commit}, answer) {
+            commit("setAnswers", answer);
         }
     }
 })

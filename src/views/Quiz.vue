@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Quiz!!!!</h1>
-    <p>{{ questions[id].question }}</p>
-    <Answer :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
+    <h1>Question {{id + 1}}</h1>
+    <p :key:="id">{{ questions[id].question }}</p>
+    <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
   </div>
 </template>
 
@@ -33,11 +33,13 @@ export default {
       this.answer = this.questions[this.id].incorrect_answers
       this.answer.push(this.questions[this.id].correct_answer)
     },
-    onAnswerChange() {
-      // Get the selected index in the select list and use that index to get the Id of category
-      //const index = event.target.options.selectedIndex
-      //const categoryId = event.target.options[index].id
-
+    onAnswerChange(newId) {
+      //If there are still more questions, set this id to the next question id.
+      if(this.id < this.questions.length) {
+        this.id = newId
+        this.setAnswersArray()
+      }
+      //else go to the results screen
     },
   }
 }

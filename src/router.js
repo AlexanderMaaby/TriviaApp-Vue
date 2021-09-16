@@ -6,6 +6,8 @@ import Results from "@/views/Results";
 
 Vue.use(VueRouter)
 
+
+
 const routes = [
     {
         path: "/",
