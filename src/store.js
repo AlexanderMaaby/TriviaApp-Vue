@@ -9,6 +9,12 @@ export default new Vuex.Store({
     state: {
         user: null,
         error: null,
+        quizTemplate:{
+            difficulty: null,
+            numberOfQuestions: 10,
+            category: null
+        },
+        questions: null
     },
     getters: {
         getUser: state => {
@@ -19,6 +25,12 @@ export default new Vuex.Store({
                 return state.user.highScore;
             }
             return state.user.score;
+        },
+        getQuizTemplate: state => {
+            return state.quizTemplate;
+        },
+        getQuestions: state => {
+            return state.questions;
         }
     },
     mutations: {
@@ -27,6 +39,12 @@ export default new Vuex.Store({
         },
         setError: (state, error) => {
             state.error = error
+        },
+        setQuizTemplate: (state, template) => {
+            state.quizTemplate = template
+        },
+        setQuestions: (state, questions) => {
+            state.questions = questions
         }
     },
     actions: {

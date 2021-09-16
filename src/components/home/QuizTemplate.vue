@@ -2,28 +2,41 @@
     <div>
         <h2>Quiz Template</h2>
         <section>
-            <div v-for="level in difficultyLevels" :key="level" >
-                <CheckBoxes :level="level" />
-            </div>
-
+          <label>Difficulty </label>
+          <select>
+            <DropDown v-for="level in difficultyLevels" :key="level" :item="level"/>
+          </select>
+          <label>Amount of questions </label>
+          <select>
+            <DropDown v-for="amount in amountOfQuestions" :key="amount" :item="amount"/>
+          </select>
+          <label>Categories </label>
+          <select>
+            <DropDown v-for="category in categories" :key="category.id" :item="category.name"/>
+          </select>
         </section>
     </div>
-
 </template>
 
-
 <script>
-import CheckBoxes from "@/components/home/CheckBoxes"
+import {getCategories} from "@/api/quiz-API";
+import DropDown from "@/components/home/DropDown";
 export default {
     name: "QuizTemplate",
     data() {
         return {
             difficultyLevels: ["Any Difficulty", "Easy", "Medium", "Hard"],
+            amountOfQuestions: [10, 20, 30],
             categories: [""]
         }
     },
-    components: {
-        CheckBoxes
+    async created() {
+      //Maybe handle this error later :)
+      const [error, result] = await getCategories()
+      this.categories = result
+    },
+  components: {
+      DropDown
     }
 }
 </script>

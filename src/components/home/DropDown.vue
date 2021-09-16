@@ -1,10 +1,11 @@
 <template>
-<div></div>
+  <option id="item">{{item}}</option>
 </template>
 
 <script>
 export default {
-  name: "Quiz"
+  name: "DropDown",
+  props: ["item"]
 }
 </script>
 
