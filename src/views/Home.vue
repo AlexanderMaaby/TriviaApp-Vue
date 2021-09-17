@@ -10,13 +10,16 @@
 <script>
 import Form from "@/components/home/Form";
 import QuizTemplate from "@/components/home/QuizTemplate";
-import { mapState } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: "Home",
   components: {
     Form,
     QuizTemplate
+  },
+  created() {
+    this.updateTemplate
   },
   data() {
     return {
@@ -25,7 +28,18 @@ export default {
     }
   },
   computed: {
-    ...mapState(["user"]) 
+    ...mapState(["user"]),
+  },
+  actions: {
+    ...mapMutations(["setQuizTemplate"]),
+    updateTemplate() {
+      const template = {
+        difficulty: null,
+        numberOfQuestions: 10,
+        category: null
+      }
+      this.setQuizTemplate = template
+    }
   }
 }
 </script>

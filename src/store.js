@@ -61,6 +61,9 @@ export default new Vuex.Store({
         setQuestions: (state, questions) => {
             state.questions = questions
         },
+        setQuizTemplate: (state, template) => {
+            state.quizTemplate = template
+        },
         setCurrentScore: (state, score) => {
             state.currentScore = score;
         },
