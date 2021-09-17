@@ -1,5 +1,5 @@
 <template>
-<img v-if="shouldDisplay" src="@/assets/pepepng.png"/>
+  <img v-if="shouldDisplay" src="@/assets/pepepng.png"/>
 </template>
 
 <script>
@@ -14,14 +14,9 @@ export default {
   computed: {
     shouldDisplay: function () {
       const score = this.getCurrentScore()
-      console.log(score)
       if (score < 30) return true
       return false
     }
   },
 }
 </script>
-
-<style scoped>
-
-</style>
