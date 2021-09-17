@@ -35,11 +35,14 @@ export default {
     },
     onAnswerChange(newId) {
       //If there are still more questions, set this id to the next question id.
-      if(this.id < this.questions.length) {
+      if(this.id < this.questions.length -1) {
         this.id = newId
         this.setAnswersArray()
       }
       //else go to the results screen
+      else {
+        this.$router.push("/results")
+      }
     },
   }
 }

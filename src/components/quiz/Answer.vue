@@ -17,8 +17,6 @@ export default {
       ...mapActions(["addAnswer"]),
       ...mapGetters(["getAnswers"]),
       onAnswerChange(event) {
-        console.log(this.answer + " is the answer")
-
         let currentAnswers = this.getAnswers()
         currentAnswers.push(this.answer)
         this.addAnswer(currentAnswers)
