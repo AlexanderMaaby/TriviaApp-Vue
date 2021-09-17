@@ -4,7 +4,7 @@
     <section>
       <p >You scored</p>
       <h3>{{ currentScore }} points</h3>
-      <div v-if="this.user">Ree {{this.user.highScore}}</div>
+      <div v-if="this.user">High score: {{this.user.highScore}}</div>
       <section>
         <router-link to="/">Home</router-link>
         <button @click="reDoQuiz">Do Again</button>
