@@ -1,6 +1,6 @@
 <template>
 <div>
-    <label>{{ answer }}</label>
+    <label v-html="answer"></label>
     <input @change="onAnswerChange" type="radio" name="answer"/>
 </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Question {{id + 1}}</h1>
-    <p :key:="id">{{ questions[id].question }}</p>
+    <p :key:="id" v-html="questions[id].question"/>
     <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
   </div>
 </template>
