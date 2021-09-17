@@ -2,8 +2,12 @@
   <div>
     <h2>Results</h2>
     <section>
-      <p v-if="currentScore > userScore">You scored</p>
-      <h3>{{ userScore }}</h3>
+      <p >You scored</p>
+      <h3>{{ currentScore }} points</h3>
+      <div v-if="this.user">Ree {{this.user.highScore}}</div>
+      <section>
+        <router-link to="/">Home</router-link>
+      </section>
     </section>
     <QuestionResult v-for="question in questions" 
                     :key="questions.indexOf(question)" 
@@ -14,19 +18,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import QuestionResult from "@/components/results/QuestionResult";
 export default {
   name: "Results",
   data() {
     return {
-      userScore: user.highScore || user.score
+      userScore: null
     }
   },
-  components:{ QuestionResult },
+  created() {
+    this.checkScore();
+  },
   computed: {
     ...mapState(["currentScore", "answers", "questions", "user"]),
   },
+  components:{ QuestionResult }, 
+  methods: {
+    ...mapActions(["updateUserWithNewScore"]),
+    async checkScore() {
+      this.userScore = this.user.highScore !== undefined ? this.user.highScore : this.user.score;
+      if(this.currentScore > this.userScore)  {
+        await this.updateUserWithNewScore()
+      }
+    }
+  }
 }
 </script>
 

@@ -12,7 +12,7 @@
 <script>
 export default {
     name: "QuestionResult",
-    props: ["question", "answer"]
+    props: ["question", "answer"],
 }
 </script>
 

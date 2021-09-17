@@ -3,7 +3,7 @@ import Vue from "vue";
 
 Vue.use(Vuex)
 
-import { Get, Post} from "./api/user-API";
+import { get, post, patch} from "./api/user-API";
 import { getQuestions } from "./api/quiz-API";
 
 export default new Vuex.Store({
@@ -70,12 +70,12 @@ export default new Vuex.Store({
     },
     actions: {
         async fetchUser({ commit, }, username) {
-            const [error, user] = await Get(username);
+            const [error, user] = await get(username);
             commit("setUsers", user);
             commit("setError", error);
         },
         async addUser({ commit }, username) {
-            const [error, user] = await Post(username);
+            const [error, user] = await post(username);
             commit("setUsers", user);
             commit("setError", error);
         },
@@ -92,6 +92,11 @@ export default new Vuex.Store({
             const [error, questions] = await getQuestions(state.quizTemplate.numberOfQuestions, settings());
             commit("setError", error);
             commit("setQuestions", questions);
+        },
+        async updateUserWithNewScore({commit, state}) {
+            const [error, userUpdated] = await patch(state.user, state.currentScore);
+            commit("setError", error);
+            commit("setUser", userUpdated);
         },
         addAnswer({commit}, answer) {
             commit("setAnswers", answer);
