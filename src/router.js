@@ -6,8 +6,6 @@ import Results from "@/views/Results";
 
 Vue.use(VueRouter)
 
-
-
 const routes = [
     {
         path: "/",
@@ -20,6 +18,10 @@ const routes = [
     {
         path: "/results",
         component: Results
+    },
+    {
+        path: "*",
+        component: Home
     }
 ];
 

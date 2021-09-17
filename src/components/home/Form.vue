@@ -37,6 +37,7 @@ export default {
         async onClickGetUser() {
             await this.fetchUser(this.username);
             // If user does not exist create a new one
+
             if(!this.getUser) {
               this.addUser(this.username)
             }

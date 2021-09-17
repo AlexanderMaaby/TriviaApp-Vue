@@ -71,11 +71,13 @@ export default new Vuex.Store({
     actions: {
         async fetchUser({ commit, }, username) {
             const [error, user] = await get(username);
+            console.log(error)
             commit("setUsers", user);
             commit("setError", error);
         },
         async addUser({ commit }, username) {
             const [error, user] = await post(username);
+            console.log(error)
             commit("setUsers", user);
             commit("setError", error);
         },

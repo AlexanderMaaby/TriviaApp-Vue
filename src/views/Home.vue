@@ -17,6 +17,10 @@ export default {
     Form,
     QuizTemplate
   },
+  created() {
+    console.log()
+    this.$router.history.current.path = "/"
+  },
   data() {
     return {
       title: "Welcome to Quiz"
