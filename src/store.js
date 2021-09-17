@@ -16,7 +16,7 @@ export default new Vuex.Store({
             category: null
         },
         questions: null,
-        currentScore: null,
+        currentScore: 0,
         answers: []
     },
     getters: {
@@ -95,6 +95,9 @@ export default new Vuex.Store({
         },
         addAnswer({commit}, answer) {
             commit("setAnswers", answer);
+        },
+        addCurrentScore({commit}, score) {
+            commit("setCurrentScore", score);
         }
     }
 })
