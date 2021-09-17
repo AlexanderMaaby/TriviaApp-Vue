@@ -71,13 +71,11 @@ export default new Vuex.Store({
     actions: {
         async fetchUser({ commit, }, username) {
             const [error, user] = await get(username);
-            console.log(error)
             commit("setUsers", user);
             commit("setError", error);
         },
         async addUser({ commit }, username) {
             const [error, user] = await post(username);
-            console.log(error)
             commit("setUsers", user);
             commit("setError", error);
         },
@@ -92,7 +90,6 @@ export default new Vuex.Store({
                 if(categoryString) setString += `&${categoryString.toLowerCase()}`;
                 return setString;
             };
-            console.log("https://opentdb.com/api.php?amount=" + state.quizTemplate.numberOfQuestions + settings())
             const [error, questions] = await getQuestions(state.quizTemplate.numberOfQuestions, settings());
             commit("setError", error);
             commit("setQuestions", questions);
