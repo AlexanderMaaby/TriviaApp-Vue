@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="answerDiv">
     <h1>Question {{id + 1}}</h1>
     <p :key:="id" v-html="questions[id].question"/>
     <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
@@ -31,6 +31,7 @@ export default {
     setAnswersArray() {
       this.answer = this.questions[this.id].incorrect_answers
       this.answer.push(this.questions[this.id].correct_answer)
+      this.answer.sort()
     },
     onAnswerChange(newId) {
       //If there are still more questions, set this id to the next question id.
