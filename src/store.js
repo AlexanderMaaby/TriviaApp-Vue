@@ -85,10 +85,11 @@ export default new Vuex.Store({
 
             const settings = () => {
                 let setString = "";
-                if(difficultyString) setString += `&${difficultyString}`;
-                if(categoryString) setString += `&${categoryString}`;
+                if(difficultyString) setString += `&${difficultyString.toLowerCase()}`;
+                if(categoryString) setString += `&${categoryString.toLowerCase()}`;
                 return setString;
             };
+            console.log("https://opentdb.com/api.php?amount=" + state.quizTemplate.numberOfQuestions + settings())
             const [error, questions] = await getQuestions(state.quizTemplate.numberOfQuestions, settings());
             commit("setError", error);
             commit("setQuestions", questions);
