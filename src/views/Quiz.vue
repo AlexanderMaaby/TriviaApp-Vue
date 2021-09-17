@@ -21,7 +21,6 @@ export default {
   },
   created() {
     this.setAnswersArray();
-    console.log(this.answer)
   },
   computed: {
     ...mapGetters(["getQuestions"]),
