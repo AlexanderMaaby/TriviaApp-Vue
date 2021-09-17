@@ -15,12 +15,14 @@
                     :answer="answers[questions.indexOf(question)]" 
                     :question="question"
     />
+    <ResultImage/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 import QuestionResult from "@/components/results/QuestionResult";
+import ResultImage from "@/components/results/ResultImage";
 export default {
   name: "Results",
   data() {
@@ -34,7 +36,7 @@ export default {
   computed: {
     ...mapState(["currentScore", "answers", "questions", "user"]),
   },
-  components:{ QuestionResult }, 
+  components:{ResultImage, QuestionResult },
   methods: {
     ...mapActions(["updateUserWithNewScore", "getQuestionsFromTemplate"]),
     async checkScore() {
