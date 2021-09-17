@@ -43,7 +43,7 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        setUsers: (state, user) => {
+        setUser: (state, user) => {
             state.user = user
         },
         setError: (state, error) => {
@@ -74,12 +74,12 @@ export default new Vuex.Store({
     actions: {
         async fetchUser({ commit, }, username) {
             const [error, user] = await get(username);
-            commit("setUsers", user);
+            commit("setUser", user);
             commit("setError", error);
         },
         async addUser({ commit }, username) {
             const [error, user] = await post(username);
-            commit("setUsers", user);
+            commit("setUser", user);
             commit("setError", error);
         },
         async getQuestionsFromTemplate({commit, state}) {
@@ -99,6 +99,8 @@ export default new Vuex.Store({
         },
         async updateUserWithNewScore({commit, state}) {
             const [error, userUpdated] = await patch(state.user, state.currentScore);
+            console.log(userUpdated)
+            console.log("REEEEE")
             commit("setError", error);
             commit("setUser", userUpdated);
         },

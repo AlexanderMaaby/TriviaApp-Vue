@@ -30,7 +30,7 @@ export default {
   computed: {
     ...mapState(["user"]),
   },
-  actions: {
+  methods: {
     ...mapMutations(["setQuizTemplate"]),
     updateTemplate() {
       const template = {

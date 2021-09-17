@@ -41,6 +41,7 @@ export default {
     ...mapActions(["updateUserWithNewScore", "getQuestionsFromTemplate"]),
     async checkScore() {
       this.userScore = this.user.highScore !== undefined ? this.user.highScore : this.user.score;
+      console.log(this.userScore)
       if(this.currentScore > this.userScore)  {
         await this.updateUserWithNewScore()
       }

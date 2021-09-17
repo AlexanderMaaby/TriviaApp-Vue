@@ -41,10 +41,10 @@ export const post = async (username) => {
     }
 }
 
-export const patch = (user, newScore) => {
+export const patch = async (user, newScore) => {
     try {
         let userScoreName = user.highScore !== null ? "highScore" : "score";
-        const userUpdated = fetch(apiURL + `/${user.id}`, {
+        const userUpdated = await fetch(apiURL + `/${user.id}`, {
             method: "PATCH",
             headers: {
                 "X-API-Key": apiKey,
