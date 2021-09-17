@@ -61,7 +61,7 @@ export default {
       },
       async startQuiz() {
         await this.getQuestionsFromTemplate();
-        this.$router.push("/question/1")
+        this.$router.push("/quiz")
       }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div ref="answerDiv">
+  <div ref="answerDiv" id="answerDiv">
     <h1>Question {{id + 1}}</h1>
     <p :key:="id" v-html="decodeURIComponent(questions[id].question)"/>
     <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       answer: [],
-      id: this.$route.params.id -1
+      id: 0
     }
   },
   created() {
@@ -51,5 +51,7 @@ export default {
 </script>
 
 <style scoped>
-
+#answerDiv {
+  color: #ed254eff;
+}
 </style>
