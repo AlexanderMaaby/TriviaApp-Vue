@@ -17,7 +17,6 @@ export default {
   computed: {
     shouldDisplay: function () {
       const score = this.getCurrentScore()
-      console.log(score)
       if (score < 40) return true
       return false
     }
