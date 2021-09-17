@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h4>{{ question.question }}</h4>
+        <h4>{{ decodeURIComponent(question.question) }}</h4>
         <div>
-            <p>You answered: {{ answer }}</p>
-            <p>Correct answer: {{ question.correct_answer }}</p>
+            <p>You answered: {{ decodeURIComponent(answer) }}</p>
+            <p>Correct answer: {{ decodeURIComponent(question.correct_answer) }}</p>
         </div>
         <div class="breaker"></div>
     </div>

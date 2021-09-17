@@ -80,6 +80,7 @@ export default new Vuex.Store({
             commit("setError", error);
         },
         async getQuestionsFromTemplate({commit, state}) {
+            state.answers = [];
             const difficultyString = state.quizTemplate.difficulty ? `difficulty=${state.quizTemplate.difficulty}`: null;
             const categoryString = state.quizTemplate.category ? `category=${state.quizTemplate.category}` : null;
 

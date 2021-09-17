@@ -1,14 +1,14 @@
 <template>
   <div ref="answerDiv">
     <h1>Question {{id + 1}}</h1>
-    <p :key:="id" v-html="questions[id].question"/>
+    <p :key:="id" v-html="decodeURIComponent(questions[id].question)"/>
     <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
   </div>
 </template>
 
 <script>
 import Answer from "@/components/quiz/Answer";
-import {mapGetters, mapState} from "vuex";
+import {mapGetters, mapState, mapMutations} from "vuex";
 
 export default {
   name: "Quiz",
@@ -21,6 +21,7 @@ export default {
   },
   created() {
     this.setAnswersArray();
+    this.setCurrentScore(0);
   },
   computed: {
     ...mapGetters(["getQuestions"]),
@@ -28,6 +29,7 @@ export default {
   },
   components: {Answer},
   methods: {
+    ...mapMutations(["setCurrentScore"]),
     setAnswersArray() {
       this.answer = this.questions[this.id].incorrect_answers
       this.answer.push(this.questions[this.id].correct_answer)

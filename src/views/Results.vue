@@ -7,6 +7,7 @@
       <div v-if="this.user">Ree {{this.user.highScore}}</div>
       <section>
         <router-link to="/">Home</router-link>
+        <button @click="reDoQuiz">Do Again</button>
       </section>
     </section>
     <QuestionResult v-for="question in questions" 
@@ -35,12 +36,16 @@ export default {
   },
   components:{ QuestionResult }, 
   methods: {
-    ...mapActions(["updateUserWithNewScore"]),
+    ...mapActions(["updateUserWithNewScore", "getQuestionsFromTemplate"]),
     async checkScore() {
       this.userScore = this.user.highScore !== undefined ? this.user.highScore : this.user.score;
       if(this.currentScore > this.userScore)  {
         await this.updateUserWithNewScore()
       }
+    },
+    async reDoQuiz() {
+      await this.getQuestionsFromTemplate();
+      this.$router.push("/question/1");
     }
   }
 }

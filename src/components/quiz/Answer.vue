@@ -1,11 +1,9 @@
 <template>
 <div>
-    <label v-html="answer"></label>
-    <input @change="onAnswerChange" type="radio" name="answer"/>
+    <label for="answer">{{ decodeURIComponent(answer) }}</label>
+    <input @change="onAnswerChange" type="radio" name="answer" id="answer"/>
 </div>
 </template>
-
-// TODO: Fix label and input on press choose
 
 <script>
 import {mapActions, mapGetters} from "vuex";
@@ -25,7 +23,7 @@ export default {
           this.addCurrentScore(currentScore)
         }
       },
-      onAnswerChange(event) {
+      onAnswerChange() {
         let currentAnswers = this.getAnswers()
         currentAnswers.push(this.answer)
         this.updateScore()
