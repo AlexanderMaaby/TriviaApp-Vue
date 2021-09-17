@@ -1,7 +1,8 @@
 <template>
-    <div>
-      <h1>{{ title }} </h1>
-      <Form :title="title"/>
+    <div class="home">
+      <h1>{{ title }}<span>Vue</span>
+      </h1>
+      <Form />
       <QuizTemplate v-if="user" />
     </div>
 </template>
@@ -17,13 +18,10 @@ export default {
     Form,
     QuizTemplate
   },
-  created() {
-    console.log()
-    this.$router.history.current.path = "/"
-  },
   data() {
     return {
-      title: "Welcome to Quiz"
+      title: "Welcome to The-unnecessary-long-name-for-a-tiny-" +
+      "little-quiz-game-made-for-a-one-week-project-with-"
     }
   },
   computed: {
@@ -33,5 +31,18 @@ export default {
 </script>
 
 <style scoped>
+  .home {
+    margin: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    color: #1cb887;
+  }
+
 
 </style>

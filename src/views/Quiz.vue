@@ -1,6 +1,7 @@
 <template>
-  <div ref="answerDiv" id="answerDiv">
-    <h1>Question {{id + 1}}</h1>
+  <div ref="answerDiv" class="answerDiv">
+    <h1>Question {{id + 1}} / {{questions.length}}</h1>
+    <p class="category">{{ decodeURIComponent(questions[0].category) }}</p>
     <p :key:="id" v-html="decodeURIComponent(questions[id].question)"/>
     <Answer @change="onAnswerChange" :answer="answers" v-for="answers in answer" :key="answers" :id="id" :item="answers" />
   </div>
@@ -51,7 +52,11 @@ export default {
 </script>
 
 <style scoped>
-#answerDiv {
-  color: #ed254eff;
-}
+  .answerDiv {
+    color: #1cb887;
+  }
+
+  .category {
+    color: white;
+  }
 </style>

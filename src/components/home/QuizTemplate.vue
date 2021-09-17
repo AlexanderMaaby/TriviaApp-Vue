@@ -2,20 +2,26 @@
     <div>
         <h2>Quiz Template</h2>
         <section>
-          <label>Difficulty </label>
-          <select @change="onDifficultyChange($event)">
-            <DropDown v-for="level in difficultyLevels" :key="level" :id="level" :item="level" :templateValue="'difficulty'"/>
-          </select >
-          <label>Amount of questions </label>
-          <select @change="onAmountChange($event)">
-            <DropDown v-for="amount in amountOfQuestions" :key="amount" :item="amount" :templateValue="'numberOfQuestions'"/>
-          </select>
-          <label>Categories </label>
-          <select @change="onCategoryChange($event)">
-            <DropDown v-for="categoryObj in categories" :key="categoryObj.id" :id="categoryObj.id" :item="categoryObj.name" :templateValue="'category'"/>
-          </select>
+          <div class="temp-drop-container">
+            <label>Difficulty - </label>
+            <select @change="onDifficultyChange($event)">
+              <DropDown v-for="level in difficultyLevels" :key="level" :id="level" :item="level" :templateValue="'difficulty'"/>
+            </select >
+          </div>
+          <div class="temp-drop-container">
+            <label>Amount of questions - </label>
+            <select @change="onAmountChange($event)">
+              <DropDown v-for="amount in amountOfQuestions" :key="amount" :item="amount" :templateValue="'numberOfQuestions'"/>
+            </select>
+          </div>
+          <div class="temp-drop-container"> 
+            <label>Categories - </label>
+            <select @change="onCategoryChange($event)">
+              <DropDown v-for="categoryObj in categories" :key="categoryObj.id" :id="categoryObj.id" :item="categoryObj.name" :templateValue="'category'"/>
+            </select>
+          </div>
         </section>
-        <button @click="startQuiz">START</button>
+        <button @click="startQuiz" class="start-button">START</button>
     </div>
 </template>
 
@@ -36,7 +42,6 @@ export default {
       ...mapState(["quizTemplate"])
     },
     async created() {
-      //Maybe handle this error later :)
       const [error, result] = await getCategories()
       this.categories = result
       this.setError(error);
@@ -68,5 +73,23 @@ export default {
 </script>
 
 <style scoped>
+  .temp-drop-container {
+    margin: 0 0 1rem 0;
+  }
+
+  .start-button {
+    background-color: rgb(129, 188, 255);
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .start-button:hover {
+    background-color: rgb(22, 86, 163);
+  }
 
 </style>
