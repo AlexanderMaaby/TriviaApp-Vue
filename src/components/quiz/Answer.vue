@@ -1,7 +1,7 @@
 <template>
 <div>
     <label v-html="answer"></label>
-    <input @change="onAnswerChange" type="radio" name="answer"/>
+    <input @change="onAnswerChange" type="radio" name="answer" :checked="isChecked"/>
 </div>
 </template>
 
@@ -13,6 +13,11 @@ import {mapActions, mapGetters} from "vuex";
 export default {
     name: "Answer",
     props: ["answer", "id"],
+    data () {
+      return {
+        isChecked: false,
+      }
+    },
     methods: {
       ...mapActions(["addAnswer", "addCurrentScore"]),
       ...mapGetters(["getAnswers", "getQuestions", "getCurrentScore"]),
