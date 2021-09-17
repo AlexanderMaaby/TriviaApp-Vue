@@ -5,9 +5,9 @@
       <p >You scored</p>
       <h3>{{ currentScore }} points</h3>
       <div v-if="this.user">High score: {{this.user.highScore}}</div>
-      <section>
-        <router-link to="/">Home</router-link>
-        <button @click="reDoQuiz">Do Again</button>
+      <section class="navigation">
+        <router-link class="home-link"  to="/">Home</router-link>
+        <button @click="reDoQuiz" class="button">Do Again</button>
       </section>
     </section>
     <QuestionResult v-for="question in questions" 
@@ -15,7 +15,7 @@
                     :answer="answers[questions.indexOf(question)]" 
                     :question="question"
     />
-    <ResultImage/>
+    <ResultImage />
   </div>
 </template>
 
@@ -54,5 +54,20 @@ export default {
 </script>
 
 <style scoped>
+
+  .navigation { 
+    margin: 2rem 0 3rem 0;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .navigation .home-link {
+    color: #1cb887 ;
+  }
+
+
 
 </style>

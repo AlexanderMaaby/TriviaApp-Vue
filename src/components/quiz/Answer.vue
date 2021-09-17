@@ -2,7 +2,7 @@
 <div>
   <!--  <label for="answer">{{ decodeURIComponent(answer) }}</label>-->
  <!-- <input @change="onAnswerChange" type="checkbox" name="answer" id="answer"/> -->
-    <button @click="onAnswerChange" v-text="decodeURIComponent(answer)" name="answer" id="answerButton"/>
+    <button @click="onAnswerChange" v-text="decodeURIComponent(answer)" name="answer" class="answerButton"/>
 </div>
 </template>
 
@@ -35,11 +35,18 @@ export default {
 }
 </script>
 <style scoped>
-#answerButton {
-  background-color: #c2eabdff;
-  color: #465362ff;
-  border-radius: 12px;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-}
+  .answerButton {
+    background-color: rgb(24, 41, 39);
+    color: rgb(233, 235, 236);
+    font-weight: bolder;
+    border-radius: 5px;
+    border: none;
+    padding: 1rem;
+    margin: 1rem;
+    width: 40%;
+  }
+
+  .answerButton:hover {
+    background-color: rgb(59, 104, 99);
+  }
 </style>
