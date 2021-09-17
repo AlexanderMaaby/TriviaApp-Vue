@@ -25,7 +25,7 @@ export default {
       },
       onAnswerChange() {
         let currentAnswers = this.getAnswers()
-        currentAnswers.push(this.answer)
+        currentAnswers.push(decodeURIComponent(this.answer))
         this.updateScore()
         this.addAnswer(currentAnswers)
         this.$emit('change', parseInt(this.id) + 1)

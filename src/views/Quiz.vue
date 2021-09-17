@@ -16,7 +16,8 @@ export default {
   data() {
     return {
       answer: [],
-      id: this.$route.params.id -1
+      //id: this.$route.params.id -1
+      id: 0
     }
   },
   created() {
